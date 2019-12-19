@@ -3,49 +3,66 @@ import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import Imagecard from "./components/Imagecard";
 import "./App.css";
-import image1 from "./images/1.png";
-import image2 from "./images/2.png";
-import image3 from "./images/3.png";
-import image4 from "./images/4.png";
-import image5 from "./images/5.png";
-import image6 from "./images/6.png";
-import image7 from "./images/7.png";
-import image8 from "./images/8.png";
-import image9 from "./images/9.png";
-import image10 from "./images/10.png";
-import image11 from "./images/11.png";
-import image12 from "./images/12.png";
-import image13 from "./images/13.png";
-import image14 from "./images/14.png";
 
 class App extends Component {
   state = {
     score: 0,
     highScore: 0,
     images: [
-      { src: image1, clicked: false },
-      { src: image2, clicked: false },
-      { src: image3, clicked: false },
-      { src: image4, clicked: false },
-      { src: image5, clicked: false },
-      { src: image6, clicked: false },
-      { src: image7, clicked: false },
-      { src: image8, clicked: false },
-      { src: image9, clicked: false },
-      { src: image10, clicked: false },
-      { src: image11, clicked: false },
-      { src: image12, clicked: false },
-      { src: image13, clicked: false },
-      { src: image14, clicked: false }
+      { id: 1, src: "./images/1.png", clicked: false },
+      { id: 2, src: "./images/2.png", clicked: false },
+      { id: 3, src: "./images/3.png", clicked: false },
+      { id: 4, src: "./images/4.png", clicked: false },
+      { id: 5, src: "./images/5.png", clicked: false },
+      { id: 6, src: "./images/6.png", clicked: false },
+      { id: 7, src: "./images/7.png", clicked: false },
+      { id: 8, src: "./images/8.png", clicked: false },
+      { id: 9, src: "./images/9.png", clicked: false },
+      { id: 10, src: "./images/10.png", clicked: false },
+      { id: 11, src: "./images/11.png", clicked: false },
+      { id: 12, src: "./images/12.png", clicked: false },
+      { id: 13, src: "./images/13.png", clicked: false },
+      { id: 14, src: "./images/14.png", clicked: false }
     ]
   };
+  updateClicked(index, array) {
+    array[index].clicked = true;
+    this.setState({ images: array });
+    // for (let i = 0; i < array.length; i++) {
+    //   if (array[i].id === input) {
+    //     this.setState({
+    //       [this.state.images[i]]: { ...array[i], clicked: true }
+    //     });
+    //   }
+    // }
+  }
+  handleClick = id => {
+    this.updateClicked(id, this.state.images);
+  };
+
+  shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  componentDidMount() {
+    this.setState({ images: this.shuffle(this.state.images) });
+  }
   render() {
     return (
       <>
         <Navbar score={this.state.score} highScore={this.state.highScore} />
         <Container>
-          {this.state.images.map(image => {
-            return <Imagecard image={image.src} key={image.key} />;
+          {this.state.images.map((image, i) => {
+            console.log(image);
+
+            return (
+              <Imagecard
+                id={i}
+                image={image.src}
+                key={image.src}
+                onClick={() => this.handleClick(i)}
+              />
+            );
           })}
         </Container>
       </>
