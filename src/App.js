@@ -4,40 +4,46 @@ import Container from "./components/Container";
 import Imagecard from "./components/Imagecard";
 import "./App.css";
 
+const defalt_images = [
+  { id: 1, src: "./images/1.png" },
+  { id: 2, src: "./images/2.png" },
+  { id: 3, src: "./images/3.png" },
+  { id: 4, src: "./images/4.png" },
+  { id: 5, src: "./images/5.png" },
+  { id: 6, src: "./images/6.png" },
+  { id: 7, src: "./images/7.png" },
+  { id: 8, src: "./images/8.png" },
+  { id: 9, src: "./images/9.png" },
+  { id: 10, src: "./images/10.png" },
+  { id: 11, src: "./images/11.png" },
+  { id: 12, src: "./images/12.png" },
+  { id: 13, src: "./images/13.png" },
+  { id: 14, src: "./images/14.png" }
+];
+
 class App extends Component {
   state = {
     score: 0,
     highScore: 0,
-    images: [
-      { id: 1, src: "./images/1.png", clicked: false },
-      { id: 2, src: "./images/2.png", clicked: false },
-      { id: 3, src: "./images/3.png", clicked: false },
-      { id: 4, src: "./images/4.png", clicked: false },
-      { id: 5, src: "./images/5.png", clicked: false },
-      { id: 6, src: "./images/6.png", clicked: false },
-      { id: 7, src: "./images/7.png", clicked: false },
-      { id: 8, src: "./images/8.png", clicked: false },
-      { id: 9, src: "./images/9.png", clicked: false },
-      { id: 10, src: "./images/10.png", clicked: false },
-      { id: 11, src: "./images/11.png", clicked: false },
-      { id: 12, src: "./images/12.png", clicked: false },
-      { id: 13, src: "./images/13.png", clicked: false },
-      { id: 14, src: "./images/14.png", clicked: false }
-    ]
+    images: [],
+    clicked: []
   };
-  updateClicked(index, array) {
-    array[index].clicked = true;
-    this.setState({ images: array });
-    // for (let i = 0; i < array.length; i++) {
-    //   if (array[i].id === input) {
-    //     this.setState({
-    //       [this.state.images[i]]: { ...array[i], clicked: true }
-    //     });
-    //   }
-    // }
-  }
+
   handleClick = id => {
-    this.updateClicked(id, this.state.images);
+    const tempArray = this.state.clicked;
+    if (tempArray.indexOf(id) === -1) {
+      tempArray.push(id);
+
+      this.setState({ score: this.state.score + 1, clicked: tempArray });
+      console.log("win");
+      if (this.state.score + 1 > this.state.highScore) {
+        this.setState({ highScore: this.state.score + 1 });
+      }
+      this.shuffle(this.state.images);
+    } else {
+      console.log("lose");
+      this.setState({ score: 0, clicked: [] });
+    }
   };
 
   shuffle(array) {
@@ -45,22 +51,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ images: this.shuffle(this.state.images) });
+    this.setState({ images: this.shuffle(defalt_images) });
   }
   render() {
     return (
       <>
         <Navbar score={this.state.score} highScore={this.state.highScore} />
         <Container>
-          {this.state.images.map((image, i) => {
-            console.log(image);
-
+          {this.state.images.map(image => {
             return (
               <Imagecard
-                id={i}
+                id={image.id}
                 image={image.src}
                 key={image.src}
-                onClick={() => this.handleClick(i)}
+                onClick={() => this.handleClick(image.id)}
               />
             );
           })}
