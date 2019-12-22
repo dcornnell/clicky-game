@@ -2,7 +2,7 @@
 
 ## Link to the app
 
-[click here]()
+[click here](https://dcornnell.github.io/clicky-game/)
 
 ## Description
 
