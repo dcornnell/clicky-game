@@ -86,7 +86,7 @@ class App extends Component {
           handleClose={this.hideModal}
           score={this.state.score}
         >
-          <h2>Game Over!</h2>{" "}
+          <h2>Game Over!</h2>
           <h5>
             your score was: <b>{this.state.score}</b>
           </h5>
