@@ -1,7 +1,3 @@
-.image {
-  max-width: 90px;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -10,4 +6,14 @@
 
 .grid-container {
   padding: 25px;
+}
+.card {
+  cursor: pointer;
+}
+.info {
+  cursor: pointer;
+}
+
+.info:hover {
+  color: blue;
 }
