@@ -69,7 +69,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <Navbar score={this.state.score} highScore={this.state.highScore} />
+        <Navbar
+          score={this.state.score}
+          highScore={this.state.highScore}
+          handleClick={() => this.showModal("help")}
+        />
         <Container>
           {this.state.images.map(image => {
             return (
@@ -88,7 +92,7 @@ class App extends Component {
         >
           <h2>Instructions</h2>
           <h5>
-            Click on the images. But be careful, if you click on the same image
+            Click on the images, but be careful, if you click on the same image
             twice the game is over! Once you click on a image they shift, so
             make sure you pay attention!
           </h5>
