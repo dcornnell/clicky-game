@@ -20,8 +20,8 @@ To Creat an App with React.js To learn the basics of props and components. As we
 - React.js
 - HTML
 - CSS
+- Foundation
 
 ## Future Imporvements
 
-- add directions
 - have something special happen if all the images are clicked.
