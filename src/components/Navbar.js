@@ -4,13 +4,13 @@ function Navbar({ score, highScore, handleClick }) {
   return (
     <div className="top-bar">
       <div className="top-bar-left">
-        <h4 className="menu-text">Clicky Game</h4>
+        <h4 className="menu-text">Memory Game</h4>
       </div>
       <div className="top-bar-right">
         <ul className="menu">
           <li>
             <h5 onClick={handleClick} className="menu-text">
-              <span className="info">Info</span>
+              <span className="info">Instructions</span>
             </h5>
           </li>
           <li>
