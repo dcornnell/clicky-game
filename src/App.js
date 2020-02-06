@@ -33,15 +33,15 @@ class App extends Component {
     images: [],
     clicked: [],
     gameOver: false,
-    help: false
+    help: true
   };
 
-  showModal = modelId => {
-    this.setState({ [modelId]: true });
+  showModal = modalId => {
+    this.setState({ [modalId]: true });
   };
 
-  hideModal = () => {
-    this.setState({ show: false });
+  hideModal = modalId => {
+    this.setState({ [modalId]: false });
     this.setState({ score: 0, clicked: [] });
   };
 
@@ -82,13 +82,16 @@ class App extends Component {
             );
           })}
         </Container>
-        <Modal show={this.state.help} handleClose={this.hideModal}>
+        <Modal
+          show={this.state.help}
+          handleClose={() => this.hideModal("help")}
+        >
           <h2>Instructions</h2>
           <h5> these are the instructions</h5>
         </Modal>
         <Modal
-          show={this.state.show}
-          handleClose={this.hideModal}
+          show={this.state.gameOver}
+          handleClose={() => this.hideModal("gameOver")}
           score={this.state.score}
         >
           <h2>Game Over!</h2>
