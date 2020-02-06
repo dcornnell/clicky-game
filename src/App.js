@@ -87,7 +87,11 @@ class App extends Component {
           handleClose={() => this.hideModal("help")}
         >
           <h2>Instructions</h2>
-          <h5> these are the instructions</h5>
+          <h5>
+            Click on the images. But be careful, if you click on the same image
+            twice the game is over! once you click on a image they shift so make
+            sure you pay attention!
+          </h5>
         </Modal>
         <Modal
           show={this.state.gameOver}
