@@ -32,11 +32,12 @@ class App extends Component {
     highScore: 0,
     images: [],
     clicked: [],
-    show: false
+    gameOver: false,
+    help: false
   };
 
-  showModal = () => {
-    this.setState({ show: true });
+  showModal = modelId => {
+    this.setState({ [modelId]: true });
   };
 
   hideModal = () => {
@@ -54,7 +55,7 @@ class App extends Component {
       }
       this.shuffle(this.state.images);
     } else {
-      this.showModal();
+      this.showModal("gameOver");
     }
   };
 
@@ -81,6 +82,10 @@ class App extends Component {
             );
           })}
         </Container>
+        <Modal show={this.state.help} handleClose={this.hideModal}>
+          <h2>Instructions</h2>
+          <h5> these are the instructions</h5>
+        </Modal>
         <Modal
           show={this.state.show}
           handleClose={this.hideModal}
