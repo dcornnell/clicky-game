@@ -2,11 +2,13 @@
 
 ## Link to the app
 
-[click here]()
+[click here](https://dcornnell.github.io/clicky-game/)
 
 ## Description
 
 A Memory Game, Users click on an image they havent clicked on before, if the user clicks on the same image twice that game is over. The images shift after every click!
+
+![clicky game](https://dcornnell.github.io/Portfolio-2019/assets/images//clicky.png)
 
 ## Purpose
 
