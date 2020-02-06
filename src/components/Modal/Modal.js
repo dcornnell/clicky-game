@@ -8,7 +8,7 @@ function Modal({ handleClose, show, score, children }) {
     <div className={showHideClassName}>
       <div className="callout modal-container">
         {children}
-        <button type="button" class="alert button" onClick={handleClose}>
+        <button type="button" className="alert button" onClick={handleClose}>
           Close
         </button>
       </div>
